@@ -31,9 +31,14 @@ pipeline {
             }
         }
         
-        stage('Deploy on Kubernetes namespace') {
+        stage('CLean images and containers') {
             steps {
-                echo 'Deploying....'
+                sh '''
+                docker stop $(docker ps -aq)
+                docker rm $(docker ps -aq)
+                docker rmi javaapp
+                '''
+                
             }
         }
         
