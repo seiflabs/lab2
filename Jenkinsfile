@@ -31,6 +31,7 @@ pipeline {
             }
         }
         
+       
         stage('CLean images and containers') {
             steps {
                 sh '''
